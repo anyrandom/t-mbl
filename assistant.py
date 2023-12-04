@@ -70,7 +70,9 @@ if prompt:
     thinking_msg = st.empty()
     thinking_msg.text("Thinking...")
 
-    client = OpenAI()
+    client = OpenAI(
+        api_key=st.secrets["KEY"]
+    )
     completion = client.chat.completions.create(
         engine="gpt-35-turbo",
         messages=conversation,
