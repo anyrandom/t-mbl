@@ -1,7 +1,7 @@
 import streamlit as st
 import random
 import os
-import OpenAI
+from openai import OpenAI
 from PIL import Image
 
 logo = Image.open("tmb_logo.jpg")
