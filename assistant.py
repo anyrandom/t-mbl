@@ -1,7 +1,7 @@
 import streamlit as st
 import random
 import os
-from openai import OpenAI
+import openai
 from PIL import Image
 
 logo = Image.open("tmb_logo.jpg")
@@ -12,10 +12,10 @@ st.sidebar.title("Welcome to your personal AI Assistant")
 st.sidebar.divider()
 st.sidebar.subheader("How can I help you today?")
 
-# openai.api_type = st.secrets["TYPE"]
-# openai.api_base = st.secrets["BASE"]
-# openai.api_version = st.secrets["VERSION"]
-# openai.api_key = st.secrets["KEY"]
+openai.api_type = st.secrets["TYPE"]
+openai.api_base = st.secrets["BASE"]
+openai.api_version = st.secrets["VERSION"]
+openai.api_key = st.secrets["KEY"]
 
 
 conversation = [
@@ -70,10 +70,9 @@ if prompt:
     thinking_msg = st.empty()
     thinking_msg.text("Thinking...")
 
-    client = OpenAI(
-        api_key=st.secrets["KEY"]
-    )
-    completion = client.chat.completions.create(
+
+    # Old version of openai (0.27.8)
+    completion = openai.ChatCompletion.create(
         engine="gpt-35-turbo",
         messages=conversation,
         temperature=0,
@@ -82,17 +81,6 @@ if prompt:
         frequency_penalty=0,
         presence_penalty=0
     )
-
-    # Old version of openai (0.27.8)
-    # completion = openai.ChatCompletion.create(
-    #     engine="gpt-35-turbo",
-    #     messages=conversation,
-    #     temperature=0,
-    #     max_tokens=800,
-    #     top_p=1,
-    #     frequency_penalty=0,
-    #     presence_penalty=0
-    # )
 
     chat_response = completion.choices[0].message.content
 
