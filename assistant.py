@@ -52,7 +52,7 @@ if "messages" not in st.session_state.keys():
 
 for message in st.session_state.messages:
     if message["role"] == "assistant":
-        with st.chat_message(message["role"], avatar=logo):
+        with st.chat_message(message["role"]): #, avatar=logo):
             st.write(message["content"])
     else:
         with st.chat_message(message["role"]):
