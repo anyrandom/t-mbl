@@ -12,10 +12,10 @@ st.sidebar.title("Welcome to your personal AI Assistant")
 st.sidebar.divider()
 st.sidebar.subheader("How can I help you today?")
 
-openai.api_type = st.secrets["TYPE"]
-openai.api_base = st.secrets["BASE"]
-openai.api_version = st.secrets["VERSION"]
-openai.api_key = st.secrets["KEY"]
+# openai.api_type = st.secrets["TYPE"]
+# openai.api_base = st.secrets["BASE"]
+# openai.api_version = st.secrets["VERSION"]
+# openai.api_key = st.secrets["KEY"]
 
 
 conversation = [
