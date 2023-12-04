@@ -4,7 +4,7 @@ import os
 import openai
 from PIL import Image
 
-logo = Image.open("tmb_logo.png")
+logo = Image.open("tmb_logo.jpg")
 
 st.set_page_config(page_title="Assistant", initial_sidebar_state="auto", page_icon=logo)
 st.sidebar.image(logo)
