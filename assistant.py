@@ -85,7 +85,7 @@ if prompt:
     chat_response = completion.choices[0].message.content
 
     thinking_msg.empty()
-    with st.chat_message("Assistant", avatar=logo):
+    with st.chat_message("Assistant"): #, avatar=logo):   #Commenting this because of icon error
         st.write(chat_response)
 
     message = {"role": "assistant", "content": chat_response}
