@@ -1,7 +1,7 @@
 import streamlit as st
 import random
 import os
-import openai
+import OpenAI
 from PIL import Image
 
 logo = Image.open("tmb_logo.jpg")
@@ -70,7 +70,8 @@ if prompt:
     thinking_msg = st.empty()
     thinking_msg.text("Thinking...")
 
-    completion = openai.ChatCompletion.create(
+    client = OpenAI()
+     completion = client.chat.completions.create(
         engine="gpt-35-turbo",
         messages=conversation,
         temperature=0,
@@ -79,6 +80,17 @@ if prompt:
         frequency_penalty=0,
         presence_penalty=0
     )
+
+    # Old version of openai (0.27.8)
+    # completion = openai.ChatCompletion.create(
+    #     engine="gpt-35-turbo",
+    #     messages=conversation,
+    #     temperature=0,
+    #     max_tokens=800,
+    #     top_p=1,
+    #     frequency_penalty=0,
+    #     presence_penalty=0
+    # )
 
     chat_response = completion.choices[0].message.content
 
