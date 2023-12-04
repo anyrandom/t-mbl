@@ -71,7 +71,7 @@ if prompt:
     thinking_msg.text("Thinking...")
 
     client = OpenAI()
-     completion = client.chat.completions.create(
+    completion = client.chat.completions.create(
         engine="gpt-35-turbo",
         messages=conversation,
         temperature=0,
